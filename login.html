@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+</head>
+<body>
+    <a href="addProd.html">Add Products</a>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="SignUp.html">Signup</a>
+    <br>
+    <h1>
+        Login
+    </h1>
+    <input type="text" id="userid" >
+    <input type="password" id="pass" >
+    <button onclick="login()">Login</button>
+</body>
+</html>
+<script>
+    let UserInfo = JSON.parse(localStorage.getItem("UserInfo")) || [];
+    let id = document.querySelector("#userid");
+    let pass = document.querySelector("#pass");
+
+    function login() {
+        let flag = false;
+        for (let i = 0; i < UserInfo.length; i++) {
+            if (UserInfo[i].userName  === id.value && UserInfo[i].pass  === pass.value) {
+                flag = true;                
+            }
+        }
+        if (flag) {
+            alert("Login Successful");
+            window.open("./index.html","_self")
+        } else {
+            alert("Invalid Crdentials!!!");
+        }
+    }
+</script>
